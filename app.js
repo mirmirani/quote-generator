@@ -41,7 +41,7 @@ async function getQuote() {
 
 const json = await response.json();
 //console.log(json)
-console.log(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
+displayQuote(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
 //console.log("<br> - ");
 //console.log(json.quoteAuthor);
     } catch (err) {
@@ -50,3 +50,8 @@ console.log(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
     }
 }
 
+function displayQuote(quote) {
+    const quoteText = document.querySelector('#js-quote-text');
+    quoteText.textContent = quote;
+
+}
