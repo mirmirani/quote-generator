@@ -32,6 +32,11 @@ const endpoint = 'https://quote-garden.herokuapp.com/api/v2/quotes/random'
 */
 
 async function getQuote() {
+    
+    spinner.classList.remove('hidden');
+
+    newQuoteButton.disabled = true;
+    
     try {
     
     const response = await fetch(endpoint)
@@ -42,11 +47,14 @@ async function getQuote() {
 const json = await response.json();
 //console.log(json)
 displayQuote(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
+setTweetButton(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
 //console.log("<br> - ");
 //console.log(json.quoteAuthor);
     } catch (err) {
-        console.log(err)
         alert('Failed to fetch new quote');
+    } finally {
+        newQuoteButton.disabled = false;
+        spinner.classList.add('hidden');
     }
 }
 
@@ -55,3 +63,13 @@ function displayQuote(quote) {
     quoteText.textContent = quote;
 
 }
+
+const spinner = document.querySelector('#js-spinner')
+
+const twitterButton = document.querySelector('#js-tweet');
+
+function setTweetButton(quote) {
+    twitterButton.setAttribute('href', `https://twitter.com/share?text=${quote}`);
+}
+
+getQuote();
