@@ -3,7 +3,7 @@
     What is it?
     </h5> 
     <p>
-    Another pure javascript application that makes use of APIs, promises and JSON
+    A pure javascript application that makes use of APIs, promises and JSON
     </p>
     <h5> 
     How was it?
