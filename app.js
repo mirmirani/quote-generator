@@ -1,3 +1,4 @@
+
 //document.querySelector('.class-name')
 //document.querySelector('#id-name')
 
@@ -8,28 +9,33 @@
 //https://github.com/topics/quotes-api
 
 
-const newQuoteButton = document.querySelector('#js-new-quote');
-
-newQuoteButton.addEventListener('click', getQuote);
 
 
-const endpoint = 'https://quote-garden.herokuapp.com/api/v2/quotes/random'
-
-/* 
+/*
 {
     statusCode : int,
     {
       _id: string,
       quoteText: string,
       quoteAuthor: string
-    }
-  }
+    },
+  },
 
   function getQuote() {
     console.log("quote button was clicked");
 }
 
 */
+
+
+const endpoint = 'https://animechan.vercel.app/api/random'
+const newQuoteButton = document.querySelector('#js-new-quote');
+
+newQuoteButton.addEventListener('click', getQuote);
+
+
+
+
 
 async function getQuote() {
     
@@ -46,8 +52,8 @@ async function getQuote() {
 
 const json = await response.json();
 //console.log(json)
-displayQuote(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
-setTweetButton(json.quote.quoteText + '\n - ' + json.quote.quoteAuthor);
+displayQuote(json.anime + ': \n' + json.quote + '\n - ' + json.character);
+setTweetButton(json.anime + '\n - ' + json.quote + '\n - ' + json.character);
 //console.log("<br> - ");
 //console.log(json.quoteAuthor);
     } catch (err) {
